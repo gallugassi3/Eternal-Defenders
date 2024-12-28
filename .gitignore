@@ -10,9 +10,6 @@
 # Visual Studio and Rider specific
 .vscode/
 .idea/
-*.csproj
-*.unityproj
-*.sln
 *.user
 *.userprefs
 *.pidb
