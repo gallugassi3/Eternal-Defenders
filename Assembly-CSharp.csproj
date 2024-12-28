@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\TileSystem\TileSlotEditor.cs" />
+    <Compile Include="Assets\Scripts\TileSystem\GridBuilder.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower_Crossbow.cs" />
     <Compile Include="Assets\Scripts\TileSystem\TileSetHolder.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamageable.cs" />

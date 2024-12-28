@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9132129836355686354}
   - component: {fileID: 2896289400446861156}
   m_Layer: 0
-  m_Name: tile_outter_corner
+  m_Name: tile_outer_corner_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
