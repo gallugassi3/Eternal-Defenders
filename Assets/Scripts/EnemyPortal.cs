@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class EnemyPortal : MonoBehaviour
 {
-    [SerializeField] private Transform respawn;
     [SerializeField] private float spawnCooldown;
     private float spawnTimer;
 
-    public List<GameObject> enemiesToCreate;
+    [Space]
 
+    [SerializeField] private List<Waypoint> waypointList;
 
+    private List<GameObject> enemiesToCreate = new List<GameObject>();
+
+    private void Awake()
+    {
+        CollectWaypoints();
+    }
     private void Update()
     {
         if(CanMakeNewEnemy())
@@ -36,6 +42,9 @@ public class EnemyPortal : MonoBehaviour
     {
         GameObject randomEnemy = GetRandomEnemy();
         GameObject newEnemy = Instantiate(randomEnemy, transform.position, Quaternion.identity);
+
+        Enemy enemyScript = newEnemy.GetComponent<Enemy>();
+        enemyScript.SetupEnemy(waypointList);
     }
 
     private GameObject GetRandomEnemy()
@@ -48,5 +57,21 @@ public class EnemyPortal : MonoBehaviour
         return chosenEnemy;
     }
 
-    public List<GameObject> GetEnemyList() => enemiesToCreate;
+    public void AddEnemy(GameObject enemyToAdd) => enemiesToCreate.Add(enemyToAdd);
+
+    [ContextMenu("Collect myWaypoints")]
+    private void CollectWaypoints()
+    {
+        waypointList = new List<Waypoint>();
+
+        foreach(Transform child in transform)
+        {
+            Waypoint waypoint = child.GetComponent<Waypoint>();
+
+            if (waypoint != null)
+            {
+                waypointList.Add(waypoint);
+            }
+        }
+    }
 }
