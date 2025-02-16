@@ -10,49 +10,38 @@ public class WaveDetails
 
 public class EnemyManager : MonoBehaviour
 {
+    public List<EnemyPortal> enemyPortals;
     [SerializeField] private WaveDetails currentWave;
-    [Space]
-    [SerializeField] private Transform respawn;
-    [SerializeField] private float spawnCooldown;
-    private float spawnTimer;
-
-    private List<GameObject> enemiesToCreate;
 
     [Header("Enemy Prefabs")]
     [SerializeField] private GameObject basicEnemy;
     [SerializeField] private GameObject fastEnemy;
 
-    private void Start()
+    private void Awake()
     {
-        enemiesToCreate = NewEnemyWave();
-
+        enemyPortals = new List<EnemyPortal>( FindObjectsOfType<EnemyPortal>() );
     }
 
-    private void Update()
+    [ContextMenu("Setup next wave")]
+    private void SetupNextWave()
     {
-        spawnTimer -= Time.deltaTime;
+        List<GameObject> newEnemies = NewEnemyWave();
+        int portalIndex = 0;
 
-        if (spawnTimer <= 0 && enemiesToCreate.Count > 0)
+        for (int i = 0; i < newEnemies.Count; i++)
         {
-            CreateEnemy();
-            spawnTimer = spawnCooldown;
+            GameObject enemyToAdd = newEnemies[i];
+            EnemyPortal portalToReceiveEnemy = enemyPortals[portalIndex];
+
+            portalToReceiveEnemy.GetEnemyList().Add(enemyToAdd);
+
+            portalIndex++;
+
+            if (portalIndex >= enemyPortals.Count)
+            {
+                portalIndex = 0;
+            }
         }
-    }
-
-    private void CreateEnemy()
-    {
-        GameObject randomEnemy = GetRandomEnemy();
-        GameObject newEnemy = Instantiate(randomEnemy, respawn.position, Quaternion.identity);
-    }
-
-    private GameObject GetRandomEnemy()
-    {
-        int randomIndex = Random.Range(0, enemiesToCreate.Count);
-        GameObject chosenEnemy = enemiesToCreate[randomIndex];
-
-        enemiesToCreate.Remove(chosenEnemy);
-
-        return chosenEnemy;
     }
 
     private List<GameObject> NewEnemyWave()
