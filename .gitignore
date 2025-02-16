@@ -6,14 +6,19 @@
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
+[Uu]ser[Ss]ettings/
 
 # Visual Studio and Rider specific
 .vscode/
 .idea/
+.vs/
 *.user
 *.userprefs
 *.pidb
 *.booproj
+*.csproj
+*.sln
+*.suo
 
 # OS generated files
 .DS_Store
