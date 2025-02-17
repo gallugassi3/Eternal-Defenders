@@ -10,8 +10,16 @@ public class WaveDetails
 
 public class EnemyManager : MonoBehaviour
 {
+
+    public bool waveCompleted;
+
+    public float timeBetweenWaves = 10;
+    public float waveTimer;
     [SerializeField] private WaveDetails[] levelWaves;
     private int waveIndex;
+
+    private float checkInterval = .5f;
+    private float nextCheckTime;
 
     [Header("Enemy Prefabs")]
     [SerializeField] private GameObject basicEnemy;
@@ -21,13 +29,59 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        enemyPortals = new List<EnemyPortal>( FindObjectsOfType<EnemyPortal>() );
+        enemyPortals = new List<EnemyPortal>(FindObjectsOfType<EnemyPortal>());
     }
+
 
     private void Start()
     {
         SetupNextWave();
     }
+
+    private void Update()
+    {
+        HandleWaveCompletion();
+
+        HandleWaveTiming();
+    }
+
+    private void HandleWaveCompletion()
+    {
+        if (ReadyToCheck() == false)
+        {
+            return;
+        }
+
+        if (waveCompleted == false && AllEnemiesDefeated())
+        {
+            waveCompleted = true;
+            waveTimer = timeBetweenWaves;
+        }
+    }
+
+    private void HandleWaveTiming()
+    {
+        if (waveCompleted)
+        {
+            waveTimer -= Time.deltaTime;
+
+            if (waveTimer <= 0)
+            {
+                SetupNextWave();
+            }
+        }
+    }
+
+    public void ForceNextWave()
+    {
+        if (AllEnemiesDefeated() == false)
+        {
+            Debug.LogWarning("Can't force while there is enemies in the game!");
+            return;
+        }
+        SetupNextWave();
+    }
+
 
     [ContextMenu("Setup next wave")]
     private void SetupNextWave()
@@ -55,11 +109,14 @@ public class EnemyManager : MonoBehaviour
                 portalIndex = 0;
             }
         }
+
+        waveCompleted = false;
+
     }
 
     private List<GameObject> NewEnemyWave()
     {
-        if(waveIndex >= levelWaves.Length)
+        if (waveIndex >= levelWaves.Length)
         {
             //Check if all waves are completed; return null if no more waves are available
             return null;
@@ -80,5 +137,30 @@ public class EnemyManager : MonoBehaviour
         waveIndex++;
 
         return newEnemyList;
+    }
+
+
+    private bool AllEnemiesDefeated()
+    {
+        foreach (EnemyPortal portal in enemyPortals)
+        {
+            if (portal.GetActiveEnemies().Count > 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private bool ReadyToCheck()
+    {
+        if (Time.time >= nextCheckTime)
+        {
+            nextCheckTime = Time.time + checkInterval;
+            return true;
+        }
+
+        return false;
     }
 }

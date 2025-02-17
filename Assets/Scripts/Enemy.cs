@@ -9,6 +9,7 @@ public enum EnemyType { Basic, Fast, None }
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    private EnemyPortal myPortal;
     private NavMeshAgent agent;
 
     [SerializeField] private EnemyType enemyType;
@@ -33,7 +34,7 @@ public class Enemy : MonoBehaviour, IDamageable
     }
 
 
-    public void SetupEnemy(List<Waypoint> newWaypoints)
+    public void SetupEnemy(List<Waypoint> newWaypoints , EnemyPortal myNewPortal)
     {
         myWaypoints = new List<Transform>();
 
@@ -43,6 +44,8 @@ public class Enemy : MonoBehaviour, IDamageable
         }
 
         CollectTotalDistance();
+
+        myPortal = myNewPortal;
     }
 
     private void Update()
@@ -132,12 +135,20 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         return enemyType;
     }
+
     public void TakeDamage(int damage)
     {
         healthPoints = healthPoints - damage;
-        if (healthPoints < 0)
+
+        if (healthPoints <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        myPortal.RemoveActiveEnemy(gameObject);
+        Destroy(gameObject);
     }
 }
