@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4089194694598274856}
   - component: {fileID: 2320157712095409803}
+  - component: {fileID: 3879178780742271206}
   - component: {fileID: 4164102416839224683}
   - component: {fileID: 4778648218956131795}
   - component: {fileID: 7690083413843948887}
@@ -53,7 +54,24 @@ MonoBehaviour:
   centerPoint: {fileID: 8646840498382131392}
   healthPoints: 4
   turnSpeed: 10
-  waypoints: []
+  myWaypoints: []
+--- !u!114 &3879178780742271206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899887974309907259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79bf3272e59855488f10d76e67d8d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visuals: {fileID: 8152839098272206984}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  verticalRotationSpeed: 5
 --- !u!195 &4164102416839224683
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -70,7 +70,8 @@
     <Compile Include="Assets\Scripts\Castle.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\Scripts\WaveManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Visuals.cs" />
     <Compile Include="Assets\Scripts\Tower\Crossbow_Visuals.cs" />
     <Compile Include="Assets\Scripts\RotateObject.cs" />
   </ItemGroup>
