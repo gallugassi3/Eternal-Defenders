@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\WaveManager.cs" />
     <Compile Include="Assets\Scripts\Enemy_Visuals.cs" />
     <Compile Include="Assets\Scripts\Tower\Crossbow_Visuals.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\RotateObject.cs" />
   </ItemGroup>
   <ItemGroup>
