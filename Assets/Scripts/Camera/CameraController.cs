@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] bool canControl;
     [SerializeField] private Vector3 levelCenterPoint;
     [SerializeField] private float maxDistanceFromCenter;
 
@@ -47,6 +49,10 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if(canControl == false)
+        {
+            return;
+        }
         HandleRotation();
         HandleZoom();
         //HandleEdgeMovement(); // Can use it but i didnt like the way it works.
@@ -55,6 +61,10 @@ public class CameraController : MonoBehaviour
 
         focusPoint.position = transform.position + (transform.forward * GetFocusPointDistance());
     }
+
+    public void EnableCameraControls(bool enable) => canControl = enable;
+
+    public float AdjustPitchValue(float value) => pitch = value;
 
     private void HandleZoom()
     {
@@ -162,6 +172,11 @@ public class CameraController : MonoBehaviour
             Vector3 movement = moveRight + moveForward;
             Vector3 targetPosition = transform.position + movement;
 
+            if (Vector3.Distance(levelCenterPoint, targetPosition) > maxDistanceFromCenter)
+            {
+                targetPosition = levelCenterPoint + (targetPosition - levelCenterPoint).normalized * maxDistanceFromCenter;
+            }
+
             transform.position = Vector3.SmoothDamp(transform.position , targetPosition , ref mouseMovementVelocity , smoothTime);
             lastMousePosition = Input.mousePosition;
         }
@@ -191,6 +206,11 @@ public class CameraController : MonoBehaviour
         if (mousePosition.y < edgeTresHold)
         {
             targetPosition -= flatForward * edgeMovementSpeed * Time.deltaTime;
+        }
+
+        if (Vector3.Distance(levelCenterPoint, targetPosition) > maxDistanceFromCenter)
+        {
+            targetPosition = levelCenterPoint + (targetPosition - levelCenterPoint).normalized * maxDistanceFromCenter;
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref edgeMovementVelocity, smoothTime);
