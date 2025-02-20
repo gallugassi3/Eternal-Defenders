@@ -63,8 +63,10 @@
     <Compile Include="Assets\Scripts\Tower\Tower_Crossbow.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamageable.cs" />
+    <Compile Include="Assets\Scripts\UI_MainMenu.cs" />
     <Compile Include="Assets\Scripts\TileSystem\TileSlot.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\UI_Settings.cs" />
     <Compile Include="Assets\Scripts\UI_HyperLink.cs" />
     <Compile Include="Assets\Scripts\EnemyPortal.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -352,11 +354,11 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.6f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.6f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -826,17 +828,17 @@
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Animation.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Animation.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.005">
       <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.005.dll</HintPath>
@@ -847,11 +849,11 @@
     <Reference Include="Unity.InternalAPIEngineBridge.001">
       <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>

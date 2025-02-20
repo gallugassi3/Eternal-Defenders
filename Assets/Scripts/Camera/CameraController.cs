@@ -66,6 +66,10 @@ public class CameraController : MonoBehaviour
 
     public float AdjustPitchValue(float value) => pitch = value;
 
+    public float AdjustKeyboardSensitivity(float value) => movementSpeed = value;
+
+    public float AdjustMouseSensitivity(float value) => mouseMovementSpeed = value;
+
     private void HandleZoom()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
