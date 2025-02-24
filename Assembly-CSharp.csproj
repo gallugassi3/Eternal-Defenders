@@ -62,9 +62,11 @@
     <Compile Include="Assets\Scripts\Camera\CameraEffects.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower_Crossbow.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_BuildButtonOnHoverEffect.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamageable.cs" />
     <Compile Include="Assets\Scripts\TileSystem\TileSlot.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_Pause.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Button.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Settings.cs" />
     <Compile Include="Assets\Scripts\EnemyPortal.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Assets\Scripts\TileSystem\TileSlotEditor.cs" />
     <Compile Include="Assets\Scripts\TileSystem\GridBuilder.cs" />
     <Compile Include="Assets\Scripts\TileSystem\TileSetHolder.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_TextBlinkEffect.cs" />
     <Compile Include="Assets\Scripts\Castle.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower.cs" />
     <Compile Include="Assets\Scripts\WaveManager.cs" />

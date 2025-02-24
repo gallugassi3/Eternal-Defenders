@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Animator : MonoBehaviour
 {
@@ -52,4 +53,31 @@ public class UI_Animator : MonoBehaviour
 
         rectTransform.localScale = targetScale;
     }
+
+    public void ChangeColor(Image image, float targetAlpha, float duration)
+    {
+        StartCoroutine(ChangeColorCo(image, targetAlpha, duration));
+    }
+
+    private IEnumerator ChangeColorCo(Image image, float targetAlpha, float duration)
+    {
+        float time = 0; // Tracks elapsed time
+        Color currentColor = image.color; // Store the image's original color
+        float startAlpha = currentColor.a; // Store the initial alpha value
+
+        while (time < duration) // Loop until the duration is reached
+        {
+            // Calculate the new alpha value based on elapsed time
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, time / duration);
+            // Update the image color with the new alpha value (red type , green type ,blue type , alpha type)
+            image.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+
+            time += Time.deltaTime; // Increment time by the time passed since the last frame
+            yield return null; // Wait for the next frame before continuing the loop
+        }
+
+        // Ensure the final alpha is set precisely to the target value
+        image.color = new Color(currentColor.r, currentColor.g, currentColor.b, targetAlpha);
+    }
+
 }
