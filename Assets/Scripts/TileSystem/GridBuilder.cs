@@ -17,6 +17,19 @@ public class GridBuilder : MonoBehaviour
     public List<GameObject> GetTileSetup() => createdTiles;
     public void UpdateNavMesh() => myNavMesh.BuildNavMesh();
 
+    private bool hadFirstLoad;
+
+    public bool IsOnFirstLoad()
+    {
+        if (hadFirstLoad == false)
+        {
+            hadFirstLoad = true;
+            return true;
+        }
+
+        return false;
+    }
+
 
     [ContextMenu("Build grid")]
     private void BuildGrid()
@@ -50,6 +63,8 @@ public class GridBuilder : MonoBehaviour
         GameObject newTile = Instantiate(mainPrefab, newPosition , Quaternion.identity , transform);
 
         createdTiles.Add(newTile);
+
+        newTile.GetComponent<TileSlot>().TurnIntoBuildSlotIfNeeded(mainPrefab);
     }
 
 }

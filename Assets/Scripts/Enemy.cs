@@ -85,15 +85,15 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public float DistanceToFinishLine()
     {
+        if (agent == null || !agent.isOnNavMesh) return float.MaxValue; // ערך גבוה כדי לוודא שהאויב לא ייבחר
         return totalDistance + agent.remainingDistance;
     }
-
     private void CollectTotalDistance()
     {
         for (int i = 0; i < myWaypoints.Count - 1; i++)
         {
             float distance = Vector3.Distance(myWaypoints[i].position, myWaypoints[i + 1].position);
-            totalDistance += distance;
+            totalDistance = totalDistance + distance;
         }
     }
 

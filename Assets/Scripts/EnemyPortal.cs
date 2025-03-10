@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyPortal : MonoBehaviour
 {
+    [SerializeField] WaveManager myWaveManager;
     [SerializeField] private float spawnCooldown;
     private float spawnTimer;
 
@@ -25,6 +26,8 @@ public class EnemyPortal : MonoBehaviour
             CreateEnemy();
         }
     }
+
+    public void AssignWaveManager(WaveManager newWaveManager) => myWaveManager = newWaveManager;
 
     private bool CanMakeNewEnemy()
     {
@@ -68,7 +71,9 @@ public class EnemyPortal : MonoBehaviour
         if (activeEnemies.Contains(enemyToRemove))
         {
             activeEnemies.Remove(enemyToRemove);
-        }    
+        }
+
+        myWaveManager.CheckIfWaveCompleted();
     }
 
     public List<GameObject> GetActiveEnemies() => activeEnemies;

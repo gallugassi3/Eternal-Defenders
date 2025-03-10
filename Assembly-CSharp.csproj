@@ -58,14 +58,21 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Tower\TowerAttackRadiusDisplay.cs" />
     <Compile Include="Assets\Scripts\Waypoint.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraEffects.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower_Crossbow.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\UI\UI_BuildButtonOnHoverEffect.cs" />
     <Compile Include="Assets\Scripts\Interface\IDamageable.cs" />
+    <Compile Include="Assets\Scripts\BuildSystem\BuildSlot.cs" />
     <Compile Include="Assets\Scripts\TileSystem\TileSlot.cs" />
+    <Compile Include="Assets\Scripts\LevelSystem\LevelSetup.cs" />
+    <Compile Include="Assets\Scripts\Managers\WaveManager.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_LevelSelection.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_BuildButtonsHolder.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Pause.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Button.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Settings.cs" />
@@ -75,19 +82,24 @@
     <Compile Include="Assets\Scripts\TileSystem\GridBuilder.cs" />
     <Compile Include="Assets\Scripts\TileSystem\TileSetHolder.cs" />
     <Compile Include="Assets\Scripts\UI\UI_TextBlinkEffect.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_AdviceText.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_EnemiesKilledText.cs" />
     <Compile Include="Assets\Scripts\Castle.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower.cs" />
-    <Compile Include="Assets\Scripts\WaveManager.cs" />
     <Compile Include="Assets\Scripts\UI\UI.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Tower\TowerPreview.cs" />
+    <Compile Include="Assets\Scripts\BuildSystem\BuildManager.cs" />
+    <Compile Include="Assets\Scripts\LevelSystem\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Enemy_Visuals.cs" />
+    <Compile Include="Assets\Scripts\TileSystem\TileAnimator.cs" />
     <Compile Include="Assets\Scripts\UI\UI_MainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\UI_HyperLink.cs" />
     <Compile Include="Assets\Scripts\UI\UI_Animator.cs" />
+    <Compile Include="Assets\Scripts\LevelSystem\LevelButton_Tile.cs" />
     <Compile Include="Assets\Scripts\UI\UI_InGame.cs" />
     <Compile Include="Assets\Scripts\Tower\Crossbow_Visuals.cs" />
-    <Compile Include="Assets\Scripts\UI\UI_BuildButtons.cs" />
     <Compile Include="Assets\Scripts\RotateObject.cs" />
+    <Compile Include="Assets\Scripts\UI\UI_BuildButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -10,14 +10,18 @@ public class UI : MonoBehaviour
     [SerializeField] private Image fadeImageUI;
     [SerializeField] private GameObject[] uiElements;
 
-    private UI_Animator uiAnimator;
     private UI_Settings settingsUI;
     private UI_MainMenu mainMenuUI;
-    private UI_InGame inGameUI;
+
+    public UI_InGame inGameUI { get; private set; }
+
+    public UI_Animator uiAnimator { get; private set; }
+    public UI_BuildButtonsHolder buildButtonsUI { get; private set; }
 
 
     private void Awake()
     {
+        buildButtonsUI = GetComponentInChildren<UI_BuildButtonsHolder>(true);
         settingsUI = GetComponentInChildren<UI_Settings>(true);
         mainMenuUI = GetComponentInChildren<UI_MainMenu>(true);
         inGameUI = GetComponentInChildren<UI_InGame>(true);
@@ -26,8 +30,8 @@ public class UI : MonoBehaviour
         //ActivateFadeEffect(true);
 
         SwitchTo(settingsUI.gameObject);
-        //SwitchTo(mainMenuUI.gameObject);
-        SwitchTo(inGameUI.gameObject);
+        SwitchTo(mainMenuUI.gameObject);
+        //SwitchTo(inGameUI.gameObject);
 
     }
 
@@ -38,7 +42,29 @@ public class UI : MonoBehaviour
             ui.SetActive(false);
         }
 
-        uiToEnable.SetActive(true);
+        if (uiToEnable != null)
+        {
+            uiToEnable.SetActive(true);
+        }
+    }
+
+    public void EnableInGameUI(bool enable)
+    {
+        if (enable)
+            SwitchTo(inGameUI.gameObject);
+        else
+        {
+            inGameUI.SnapTimerToDefaultPosition();
+            SwitchTo(null);
+        }
+    }
+
+    public void EnableMainMenuUI(bool enable)
+    {
+        if (enable)
+            SwitchTo(mainMenuUI.gameObject);
+        else
+            SwitchTo(null);
     }
 
     public void QuitButton()
