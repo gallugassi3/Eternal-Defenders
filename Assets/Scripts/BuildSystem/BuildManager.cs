@@ -20,7 +20,7 @@ public class BuildManager : MonoBehaviour
     {
         ui = FindFirstObjectByType<UI>();
 
-        MakeBuildSlotNotAvalibleIfNeeded(waveManager, currentGrid);
+        MakeBuildSlotNotAvailableIfNeeded(waveManager, currentGrid);
 
     }
 
@@ -54,14 +54,18 @@ public class BuildManager : MonoBehaviour
     public void MouseOverUI(bool isOverUI) => isMouseOverUI = isOverUI;
 
 
-    public void MakeBuildSlotNotAvalibleIfNeeded(WaveManager waveManager, GridBuilder currentGrid)
+    public void MakeBuildSlotNotAvailableIfNeeded(WaveManager waveManager, GridBuilder currentGrid)
     {
+        if (waveManager == null)
+        {
+            Debug.Log("No Wave Manager Assigned!");
+            return;
+        }
+
         foreach (var wave in waveManager.GetLevelWaves())
         {
             if (wave.nextGrid == null)
-            {
                 continue;
-            }
 
             List<GameObject> grid = currentGrid.GetTileSetup();
             List<GameObject> nextWaveGrid = wave.nextGrid.GetTileSetup();
@@ -76,16 +80,12 @@ public class BuildManager : MonoBehaviour
                                       currentTile.GetAllChildren().Count != nextTile.GetAllChildren().Count;
 
                 if (tileNotTheSame == false)
-                {
                     continue;
-                }
 
                 BuildSlot buildSlot = grid[i].GetComponent<BuildSlot>();
 
                 if (buildSlot != null)
-                {
                     buildSlot.SetSlotAvailableTo(false);
-                }
             }
 
         }
